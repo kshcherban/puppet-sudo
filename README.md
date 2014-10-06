@@ -16,11 +16,9 @@ Module searches hiera for **sudo_files** hash.
 Example inside hiera.
 
 ```yaml
-sudo_files:
-    users:
-        content: |
-            john   ALL=(ALL) NOPASSWD:/usr/bin/vim, (service_group) NOPASSWD:ALL
-            stan   ALL=(ALL) NOPASSWD:/usr/sbin/tcpdump
+sudo_files: |
+    john   ALL=(ALL) NOPASSWD:/usr/bin/vim, (service_group) NOPASSWD:ALL
+    stan   ALL=(ALL) NOPASSWD:/usr/sbin/tcpdump
 
 classes:
     - sudo
