@@ -2,11 +2,16 @@ class sudo(
     $filename = undef
 ) {
     if (!$filename) {
-        $hash = hiera_hash("sudo_files", undef)
+        $hash = hiera("sudo_files", undef)
         if (!$hash) {
             notify { "sudo is searching for sudo_files hash": }
         } else {
-            create_resources(sudo::setup, $hash)
+            file {"/etc/sudoers.d/users":
+                owner   => "root",
+                group   => "root",
+                mode    => 440,
+                content  => "$hash"
+            }
         }
     } else {
         file {"/etc/sudoers.d/$filename":
