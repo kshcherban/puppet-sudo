@@ -4,7 +4,7 @@ class sudo(
     if (!$filename) {
         $hash = hiera("sudo_files", undef)
         if (!$hash) {
-            notify { "sudo is searching for sudo_files hash": }
+#            notify { "sudo is searching for sudo_files hash": }
         } else {
             file {"/etc/sudoers.d/users":
                 owner   => "root",
