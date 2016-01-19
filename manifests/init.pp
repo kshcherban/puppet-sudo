@@ -9,7 +9,7 @@ class sudo(
             file {"/etc/sudoers.d/users":
                 owner   => "root",
                 group   => "root",
-                mode    => 440,
+                mode    => '0440',
                 content  => "$hash"
             }
         }
@@ -17,14 +17,14 @@ class sudo(
         file {"/etc/sudoers.d/$filename":
             owner   => "root",
             group   => "root",
-            mode    => 440,
+            mode    => '0440',
             source  => "puppet:///modules/sudo/$filename"
         }
     }
     file {"/etc/sudoers":
         owner   => "root",
         group   => "root",
-        mode    => 440,
+        mode    => '0440',
         source  => "puppet:///modules/sudo/default"
     }
 }
